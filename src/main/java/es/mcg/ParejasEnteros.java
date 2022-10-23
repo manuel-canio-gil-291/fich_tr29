@@ -83,12 +83,28 @@ public class ParejasEnteros {
     }
 
     private static void cerrarFlujos(FileOutputStream fileOutputStream, DataOutputStream dataOutputStream){
-                try{
-                    dataOutputStream.flush();
-                    dataOutputStream.close();
-                    fileOutputStream.close();
-                }catch(IOException ioException){
-                    ioException.printStackTrace();
+                if(dataOutputStream != null)
+                {
+                    try 
+                    {
+                        dataOutputStream.flush();
+                        dataOutputStream.close();
+                    } 
+                    catch (IOException ioException) 
+                    {
+                        ioException.printStackTrace();
+                    }
+                }
+                if(fileOutputStream != null)
+                {
+                    try 
+                    {
+                        fileOutputStream.close();
+                    }
+                    catch (IOException ioException) 
+                    {
+                        ioException.printStackTrace();
+                    }
                 }
         
     }
