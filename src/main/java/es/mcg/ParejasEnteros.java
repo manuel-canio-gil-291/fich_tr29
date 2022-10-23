@@ -50,6 +50,7 @@ public class ParejasEnteros {
                     {
                         dataOutputStream.writeInt(salida1);
                         dataOutputStream.writeInt(salida2);
+                        dataOutputStream.writeUTF("\n");
                     }
                     else
                     {
