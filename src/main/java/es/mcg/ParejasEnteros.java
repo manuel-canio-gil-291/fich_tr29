@@ -83,6 +83,7 @@ public class ParejasEnteros {
 
     private static void cerrarFlujos(FileOutputStream fileOutputStream, DataOutputStream dataOutputStream){
                 try{
+                    dataOutputStream.flush();
                     dataOutputStream.close();
                     fileOutputStream.close();
                 }catch(IOException ioException){
