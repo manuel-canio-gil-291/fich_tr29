@@ -55,5 +55,29 @@ public class PalabrasRepetidas {
         catch (IOException ioException) {
             ioException.printStackTrace();
         }
+        finally
+        {
+            if(dataOutputStream != null)
+            {
+                try 
+                {
+                    dataOutputStream.flush();
+                    dataOutputStream.close();    
+                } 
+                catch (IOException ioException) 
+                {
+                    ioException.printStackTrace();
+                }
+            }
+            if(fileOutputStream != null)
+            {
+                try 
+                {
+                    fileOutputStream.close();    
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
+        }
     }
 }
