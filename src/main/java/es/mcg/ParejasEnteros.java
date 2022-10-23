@@ -49,6 +49,7 @@ public class ParejasEnteros {
                     if(Integer.MAX_VALUE > salida1 || Integer.MAX_VALUE > salida2)
                     {
                         dataOutputStream.writeInt(salida1);
+                        dataOutputStream.writeUTF("\n");
                         dataOutputStream.writeInt(salida2);
                         dataOutputStream.writeUTF("\n");
                     }
