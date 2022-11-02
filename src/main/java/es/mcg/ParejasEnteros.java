@@ -31,18 +31,14 @@ public class ParejasEnteros {
                 if(entrada1.equals("INTRO"))
                 {
                     System.out.println("Ha finalizado el programa");
-                    cerrarFlujos(fileOutputStream, dataOutputStream);
-                    System.exit(0);
                 }
                 System.out.println("Introduce otro numero entero");
                 entrada2 = sc.nextLine();
                 if(entrada2.equals("INTRO"))
                 {
                     System.out.println("Ha finalizado el programa");
-                    cerrarFlujos(fileOutputStream, dataOutputStream);
-                    System.exit(0);
                 }
-                if(entrada1.equals(entrada2))
+                else if(entrada1.equals(entrada2))
                 {
                     salida1 = Integer.parseInt(entrada1);
                     salida2 = Integer.parseInt(entrada2);
@@ -52,6 +48,7 @@ public class ParejasEnteros {
                         dataOutputStream.writeUTF("\n");
                         dataOutputStream.writeInt(salida2);
                         dataOutputStream.writeUTF("\n");
+                        dataOutputStream.flush();
                     }
                     else
                     {
@@ -81,14 +78,21 @@ public class ParejasEnteros {
         {
             ioException.printStackTrace();
         }
+        finally
+        {
+            cerrarFlujos(fileOutputStream, dataOutputStream, sc);
+        }
     }
 
-    private static void cerrarFlujos(FileOutputStream fileOutputStream, DataOutputStream dataOutputStream){
+    private static void cerrarFlujos(FileOutputStream fileOutputStream, DataOutputStream dataOutputStream, Scanner sc){
+                if(sc != null)
+                {
+                    sc.close();
+                }
                 if(dataOutputStream != null)
                 {
                     try 
                     {
-                        dataOutputStream.flush();
                         dataOutputStream.close();
                     } 
                     catch (IOException ioException) 
